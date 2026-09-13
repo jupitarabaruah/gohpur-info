@@ -1,3 +1,92 @@
-<h1>Gohpur - City of Peace</h1>
-<p>Welcome to Gohpur, Biswanath, Assam</p>
-<p>This website is about Gohpur Town.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gohpur - City of Peace</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,sans-serif;background:#f8f9f0;color:#333}
+header{background:linear-gradient(135deg,#1a5d1a,#2e8b57);color:white;padding:40px 20px;text-align:center}
+header h1{font-size:40px}
+.search-box{max-width:500px;margin:20px auto;display:flex}
+.search-box input{flex:1;padding:12px 15px;border:none;border-radius:25px 0 0 25px;font-size:16px;outline:none}
+.search-box button{padding:12px 20px;border:none;background:#ffcc00;border-radius:0 25px 25px 0;font-weight:bold;cursor:pointer}
+nav{background:#fff;padding:12px;text-align:center;box-shadow:0 2px 5px rgba(0,0,0,0.1);position:sticky;top:0;z-index:10}
+nav a{margin:0 12px;text-decoration:none;color:#1a5d1a;font-weight:bold}
+.card{max-width:900px;margin:18px auto;background:white;padding:22px;border-radius:15px;box-shadow:0 3px 10px rgba(0,0,0,0.1)}
+h2{color:#1a5d1a;margin-bottom:10px;border-left:5px solid #2e8b57;padding-left:10px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:12px}
+.box{background:#f0f7f0;padding:14px;border-radius:10px;text-align:center;transition:0.3s}
+.box:hover{transform:translateY(-3px);box-shadow:0 5px 10px rgba(0,0,0,0.15)}
+footer{background:#1a5d1a;color:white;text-align:center;padding:18px;margin-top:20px}
+.hidden{display:none!important}
+</style>
+</head>
+<body>
+<header>
+<h1>🌿 Gohpur - City of Peace</h1>
+<p>Biswanath District, Assam</p>
+<div class="search-box">
+<input type="text" id="searchInput" placeholder="Search - Deopani, Tea Garden, Bihu..." onkeyup="doSearch()">
+<button onclick="doSearch()">🔍 Search</button>
+</div>
+</header>
+<nav>
+<a href="#about">About</a>
+<a href="#places">Places</a>
+<a href="#food">Food</a>
+<a href="#contact">Contact</a>
+</nav>
+
+<div class="card searchable" id="about">
+<h2>About Gohpur</h2>
+<p><b>Gohpur</b> is on north bank of Brahmaputra. Known as City of Peace. 35km from Biswanath Chariali, 50km from Tezpur. Population mixed - Assamese, Bodo, Nepali, Bengali live together.</p>
+</div>
+
+<div class="card searchable" id="places">
+<h2>Places to Visit</h2>
+<div class="grid">
+<div class="box searchable"><h3>Deopani River</h3><p>Picnic spot, clear water</p></div>
+<div class="box searchable"><h3>Tea Gardens</h3><p>Green tea gardens around Gohpur</p></div>
+<div class="box searchable"><h3>Brahmaputra Ghat</h3><p>Sunset and boat view</p></div>
+<div class="box searchable"><h3>Gohpur Weekly Market</h3><p>Local market, fresh vegetables</p></div>
+<div class="box searchable"><h3>Historical Sites</h3><p>Old Ahom era places</p></div>
+<div class="box searchable"><h3>Deur Temple</h3><p>Ancient temple near Gohpur</p></div>
+</div>
+</div>
+
+<div class="card searchable" id="food">
+<h2>Food & Culture</h2>
+<p><b>Food:</b> Khar, Masor Tenga, Pitha, Tea. <b>Festival:</b> Bihu, Durga Puja, Ali-Aye Ligang, Bodo Festival. People very friendly and peaceful.</p>
+</div>
+
+<div class="card searchable" id="contact">
+<h2>How to Reach Gohpur</h2>
+<p><b>Train:</b> Gohpur Railway Station (GHU) <br><b>Bus:</b> From Guwahati, Tezpur, Lakhimpur <br><b>Airport:</b> Tezpur (50km), Lakhimpur Lilabari (90km)</p>
+<p id="noResult" class="hidden" style="color:red;text-align:center;margin-top:15px">❌ Eitu bixoye info nai, onno kiba search kora!</p>
+</div>
+
+<footer>
+<p>🌿 Gohpur Info | https://jupitarabaruah.github.io/gohpur-info/</p>
+</footer>
+
+<script>
+function doSearch(){
+  let q = document.getElementById('searchInput').value.toLowerCase();
+  let items = document.querySelectorAll('.searchable');
+  let found = 0;
+  items.forEach(el=>{
+    if(el.innerText.toLowerCase().includes(q)){
+      el.classList.remove('hidden');
+      found++;
+    } else {
+      el.classList.add('hidden');
+    }
+  });
+  document.getElementById('noResult').classList.toggle('hidden', found>0 || q=="");
+  if(q==""){ items.forEach(e=>e.classList.remove('hidden')); }
+}
+</script>
+</body>
+</html>
